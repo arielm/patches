@@ -9,4 +9,4 @@ A [few makefiles](cinder_android_0.8.5/android) to replace, in order to [build C
 Cinder 0.8.5 | OSX, iOS (XCode 6.1.1)
 ---
 
-A [few libs](cinder_0.8.5/lib) to replace, in order to develop with the new-chronotext-toolkit ([building instructions should be uploaded soon](https://github.com/arielm/new-chronotext-toolkit/wiki)...)
+A [few libs](cinder_0.8.5/lib) to replace, in order to develop with the new-chronotext-toolkit ([building instructions are under-construction](https://github.com/arielm/new-chronotext-toolkit/wiki/How-to-(re)build-Cinder-0.8.5-for-XCode-6.1.1-and-the-new-chronotext-toolkit)...)
