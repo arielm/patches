@@ -1,7 +1,7 @@
 patches
 ===
 
-Cinder 0.8.5 | Android (NDK r10c)
+Cinder 0.8.5 | Android (NDK r10b)
 ---
 
 A [few makefiles](cinder_android_0.8.5/android) to replace, in order to [build Cinder for Android and the new-chronotext-toolkit](https://github.com/arielm/new-chronotext-toolkit/wiki/How-to-build-Cinder-0.8.5-for-Android-and-the-new-chronotext-toolkit).
