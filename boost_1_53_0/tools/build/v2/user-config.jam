@@ -91,18 +91,70 @@
 # Configure specific Python version.
 # using python : 3.1 : /usr/bin/python3 : /usr/include/python3.1 : /usr/lib ;
 
+
 # ---------------------
-# Cinder configuration.
+# OSX
 # ---------------------
 
 using clang : osx
-: xcrun clang -arch i386 -arch x86_64 -stdlib=libc++ -std=c++11 -mmacosx-version-min=10.7 -fvisibility-inlines-hidden
+:
+xcrun clang -arch i386 -arch x86_64 -stdlib=libc++ -std=c++11 -mmacosx-version-min=10.7 -fvisibility-inlines-hidden
 ;
 
+# ---------------------
+# IOS
+# ---------------------
+
 using clang : ios
-: xcrun clang -arch armv7 -arch arm64 -stdlib=libc++ -std=c++11 -miphoneos-version-min=5.0 -fvisibility-inlines-hidden -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/
+:
+xcrun clang -arch armv7 -arch arm64 -stdlib=libc++ -std=c++11 -miphoneos-version-min=5.0 -fvisibility-inlines-hidden -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/
 ;
 
 using clang : ios_sim
-: xcrun clang -arch i386 -arch x86_64 -stdlib=libc++ -std=c++11 -miphoneos-version-min=5.0 -fvisibility-inlines-hidden -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/
+:
+xcrun clang -arch i386 -arch x86_64 -stdlib=libc++ -std=c++11 -miphoneos-version-min=5.0 -fvisibility-inlines-hidden -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/
+;
+
+# ------------------
+# ANDROID
+# ------------------
+
+using gcc : android
+:
+arm-linux-androideabi-g++
+:
+<archiver>arm-linux-androideabi-ar
+<compileflags>-I${NDK_ROOT}/platforms/${ANDROID_PLATFORM}/arch-arm/usr/include
+<compileflags>-I${NDK_ROOT}/sources/cxx-stl/gnu-libstdc++/${GCC_VERSION}/include
+<compileflags>-I${NDK_ROOT}/sources/cxx-stl/gnu-libstdc++/${GCC_VERSION}/libs/armeabi/include
+
+<compileflags>-fexceptions
+<compileflags>-frtti
+<compileflags>-fpic
+<compileflags>-ffunction-sections
+<compileflags>-funwind-tables
+<compileflags>-Wno-psabi
+<compileflags>-fomit-frame-pointer
+<compileflags>-fno-strict-aliasing
+<compileflags>-finline-limit=64
+<compileflags>-Wa,--noexecstack
+<compileflags>-DANDROID
+<compileflags>-D__ANDROID__
+<compileflags>-DNDEBUG
+<compileflags>-O2
+
+<compileflags>-D__ARM_ARCH_7__
+<compileflags>-D__ARM_ARCH_7A__
+<compileflags>-march=armv7-a
+<compileflags>-mfpu=vfpv3-d16
+<compileflags>-mfloat-abi=softfp
+<compileflags>-Wl,--fix-cortex-a
+
+<architecture>arm
+<compileflags>-fvisibility=hidden
+<compileflags>-fvisibility-inlines-hidden
+<compileflags>-fdata-sections
+<cxxflags>-D__arm__
+<cxxflags>-D_REENTRANT
+<cxxflags>-D_GLIBCXX__PTHREADS
 ;
